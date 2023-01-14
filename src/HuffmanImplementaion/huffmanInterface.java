@@ -14,6 +14,6 @@ public interface huffmanInterface {
 
     public StringBuilder encodeString(String msg);
 
-    public StringBuilder decodeString(String msg);
+    public void decodeString(String msg);
 
 }

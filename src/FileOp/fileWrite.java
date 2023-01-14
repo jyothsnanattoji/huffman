@@ -1,5 +1,8 @@
 package FileOp;
 
+
 public interface fileWrite {
-    public void write(StringBuilder sb);
+    public void writeEncoded(StringBuilder sb);
+    public StringBuilder BinaryFilesToString();
+    public void writeDecoded(StringBuilder sb);
 }

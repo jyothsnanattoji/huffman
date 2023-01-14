@@ -9,17 +9,18 @@ public class implementationClass implements encodeDecode{
         String msg=fo.readFile();
         //String msg="hello";
         hf.generate(msg);   
-        StringBuilder sb1= hf.encodeString(msg);
-        // System.out.println(sb1);
-        fo.write(sb1);
+        StringBuilder sb=new StringBuilder();
+        sb=hf.encodeString(msg);
+        //System.out.println(sb);
+        fo.writeEncoded(sb);
     }
+
 
     @Override
     public void decode() {
-        String msg=fo.readFile();
-        StringBuilder sb1= hf.decodeString(msg);
-        // System.out.println(sb1);
-        fo.write(sb1);
-    }
-    
+        StringBuilder sb=new StringBuilder();
+        sb=fo.BinaryFilesToString();
+        //System.out.println(sb);
+        hf.decodeString(sb.toString());
+    } 
 }
