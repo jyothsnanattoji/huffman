@@ -2,25 +2,26 @@
     import java.io.*;
     import java.nio.file.Files;
     import java.nio.file.Paths;
-    import java.util.Scanner;
 
     public class FileOperations implements fileRead,fileWrite{
-        Scanner sc= new Scanner(System.in);
+        //Scanner sc= new Scanner(System.in);
         public String readFile() {
             String fileName= "pg100.txt";
-            StringBuilder sb= new StringBuilder();
-
-            try (BufferedReader buffer = new BufferedReader(new FileReader(fileName))) 
-            {
-                String str;
-                while ((str = buffer.readLine()) != null) {
-                    sb.append(str).append("\n");
-                }
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        return sb.toString();
+            StringBuilder sb = new StringBuilder();
+         try{
+            FileReader fileScanner = new FileReader(fileName);
+            int val = fileScanner.read();
+            while(val!=-1){
+                sb.append((char)val);
+                val =fileScanner.read();
+        }
+        fileScanner.close();
+         } 
+         catch(IOException e)
+         {
+            e.printStackTrace();
+         }
+         return sb.toString();
     }
 
     public void writeEncoded(StringBuilder sb) {
