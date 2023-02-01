@@ -74,21 +74,20 @@
 
         @Override
         public void decodeString(String msg) {
-        StringBuilder sb2= new StringBuilder();
-        StringBuilder sb1=new StringBuilder(msg);
-         String temp = "";
-         for (int i = 0; i < sb1.length(); i++) {
-             temp += sb1.charAt(i);
-             // System.out.println(sb1.charAt(i));
-             if (huffmanCode.containsValue(temp)) {
-                 for (Map.Entry<Character, String> entry : huffmanCode.entrySet()) {
-                     if (Objects.equals(entry.getValue(), temp)) {
-                         sb2.append(entry.getKey());
-                     }
-                 }
-                 temp = "";
-             }
-         }
+        Map<String, Character> reverseHuffmanCode = new HashMap<>();
+        for (Map.Entry<Character, String> entry : huffmanCode.entrySet()) {
+            reverseHuffmanCode.put(entry.getValue(), entry.getKey());
+        }
+        StringBuilder sb2 = new StringBuilder();
+        String temp = "";
+        for (int i = 0; i < msg.length(); i++) {
+            temp += msg.charAt(i);
+            Character c = reverseHuffmanCode.get(temp);
+            if (c != null) {
+                sb2.append(c);
+                temp = "";
+            }
+        }
         fo.writeDecoded(sb2);
             }    
             

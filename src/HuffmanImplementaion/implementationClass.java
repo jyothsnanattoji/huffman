@@ -7,14 +7,11 @@ public class implementationClass implements encodeDecode{
     @Override
     public void encode() {
         String msg=fo.readFile();
-        //String msg="hello";
         hf.generate(msg);   
         StringBuilder sb=new StringBuilder();
         sb=hf.encodeString(msg);
-        //System.out.println(sb);
         fo.writeEncoded(sb);
     }
-
 
     @Override
     public void decode() {
